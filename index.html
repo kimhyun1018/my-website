@@ -2,15 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Website</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        h1 { color: #333; }
-    </style>
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
 </head>
 <body>
-    <h1>Welcome to My Website EUNJINNNNNNNNNNNNNNNNNN!</h1>
-    <p>은진이 최고 ㅋ Email me @kimhyun1018@gmail.com</p>
+
+<div class="tab-container">
+    <!-- Tab Buttons -->
+    <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab(event, 'bio')">Bio</button>
+        <button class="tab-button" onclick="openTab(event, 'research')">Research</button>
+        <button class="tab-button" onclick="openTab(event, 'photos')">Photos</button>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="bio" class="tab-content" style="display: block;">
+        <h2>About Me</h2>
+        <p>Hello! My name is Hyun Kim, a fourth-year PhD candidate in transportation at New Jersey Institute of Technology.</p>
+        <p>My research interest lies in the application of Machine Learning and Reinforcement Learning.</p>
+        <p>My dissertation topic is on the usage of Deep Reinforcement Learning to dynamically route multiple shuttles based on stochastic demand.</p>
+        <p>I also have experience in data analysis, transportation modeling, and multi-agent systems.</p>
+    </div>
+    <div id="research" class="tab-content">
+    <h2>Experiences</h2>
+    <p>Here you can find my research articles, projects, and publications.</p>
+
+    <h3>Proximal Policy Optimization (PPO)</h3>
+    <p>
+        The surrogate clipped objective function used in PPO is given by:
+    </p>
+    <p>
+        $$L^{CLIP}(\theta) = \hat{\mathbb{E}}_t \left[ \min\left(r_t(\theta)\hat{A}_t,\ 
+        \text{clip}(r_t(\theta), 1 - \epsilon, 1 + \epsilon)\hat{A}_t\right) \right]$$
+    </p>
+    </div>
+    <div id="photos" class="tab-content">
+        <h2>Travel Photos</h2>
+        <p>A collection of my favorite landscape and travel photos.</p>
+    
+        <!-- Category: Fukuoka -->
+        <h3>Fukuoka, Japan</h3>
+        <div class="photo-gallery">
+            <img src="photos/IMG_0899.JPG" alt="Kokutai-doro Ave., Fukuoka, Japan">
+            <img src="photos/IMG_0980.JPG" alt="Ohori Park, Fukuoka, Japan">
+        </div>
+    
+        <!-- Category: Jeju -->
+        <h3>Ulleungdo, South Korea</h3>
+        <div class="photo-gallery">
+            <img src="photos/IMG_0386 copy.JPG" alt="Daepunggam Cliff, Ulleungdo, South Korea">
+            <img src="photos/IMG_0389.JPG" alt="Daepunggam Cliff, Ulleungdo, South Korea">
+            <img src="photos/IMG_0682 copy.JPG" alt="Port Dodong, Ulleungdo, South Korea">
+            <img src="photos/IMG_0892.JPG" alt="Gwaneumdo, Ulleungdo, South Korea">
+        </div>
+    
+        <!-- Category: New York -->
+        <h3>Bucclech Park in New Brunswick, New Jersey</h3>
+        <div class="photo-gallery">
+            <img src="photos/IMG_0060.JPG" alt="Bucclech Park in New Brunswick, New Jersey">
+            <img src="photos/IMG_0061.JPG" alt="Bucclech Park in New Brunswick, New Jersey">
+        </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
