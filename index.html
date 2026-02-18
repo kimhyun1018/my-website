@@ -1,77 +1,398 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Website</title>
-    <link rel="stylesheet" href="styles.css">
-
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hyun Kim</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <div class="container">
 
-<div class="tab-container">
-    <!-- Tab Buttons -->
-    <div class="tab-buttons">
-        <button class="tab-button active" onclick="openTab(event, 'bio')">Bio</button>
-        <button class="tab-button" onclick="openTab(event, 'research')">Research</button>
-        <button class="tab-button" onclick="openTab(event, 'photos')">Photos</button>
-    </div>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1>Hyun Kim</h1>
+        <p class="subtitle">
+          PhD Candidate (Transportation) · Deep RL for Autonomous Mobility · USDOT Research Fellow
+        </p>
+      </div>
 
-    <!-- Tab Content -->
-    <div id="bio" class="tab-content" style="display: block;">
-        <h2>About Me</h2>
-        <p>Hello! My name is Hyun Kim, a fourth-year PhD candidate in transportation at New Jersey Institute of Technology.</p>
-        <p>My research interest lies in the application of Machine Learning and Reinforcement Learning.</p>
-        <p>My dissertation topic is on the usage of Deep Reinforcement Learning to dynamically route multiple shuttles based on stochastic demand.</p>
-        <p>I also have experience in data analysis, transportation modeling, and multi-agent systems.</p>
-    </div>
-    <div id="research" class="tab-content">
-    <h2>Experiences</h2>
-    <p>Here you can find my research articles, projects, and publications.</p>
+      <div class="header-right">
+        <a class="btn" href="cv/Hyun_Kim_CV.pdf" target="_blank" rel="noopener">CV</a>
+        <a href="https://github.com/kimhyun1018" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/kimhyun1018" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:kimhyun1018@gmail.com">Email</a>
+      </div>
+    </header>
 
-    <h3>Proximal Policy Optimization (PPO)</h3>
-    <p>
-        The surrogate clipped objective function used in PPO is given by:
-    </p>
-    <p>
-        $$L^{CLIP}(\theta) = \hat{\mathbb{E}}_t \left[ \min\left(r_t(\theta)\hat{A}_t,\ 
-        \text{clip}(r_t(\theta), 1 - \epsilon, 1 + \epsilon)\hat{A}_t\right) \right]$$
-    </p>
-    </div>
-    <div id="photos" class="tab-content">
-        <h2>Travel Photos</h2>
-        <p>A collection of my favorite landscape and travel photos.</p>
+    <!-- Top Tabs -->
+    <nav class="tabs" aria-label="Primary navigation">
+      <button class="tab active" data-tab="about">About</button>
+      <button class="tab" data-tab="dissertation">Dissertation</button>
+      <button class="tab" data-tab="research">Research</button>
+      <button class="tab" data-tab="usdot">USDOT</button>
+      <button class="tab" data-tab="ires">NSF IRES</button>
+      <button class="tab" data-tab="competitions">Competitions</button>
+    </nav>
+
+    <main>
+
+      <!-- ABOUT -->
+      <section id="about" class="panel active">
+        <h2>About</h2>
+
+        <div class="card">
+          <h3>Bio</h3>
+          <p>
+            Fifth-year PhD candidate in Transportation Engineering at NJIT and a research fellow at the U.S. Department of Transportation.
+            My work focuses on applying machine learning and deep reinforcement learning to transportation systems, with emphasis on
+            autonomous and shared mobility.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Research Focus</h3>
+          <ul class="bullets">
+            <li>Multi-agent deep reinforcement learning for dynamic fleet routing under stochastic demand</li>
+            <li>Ride-sharing constraints, passenger prioritization, and real-time decision-making</li>
+            <li>Simulation-driven evaluation and transportation data analytics</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Service &amp; Leadership</h3>
+          <ul class="bullets">
+            <li>Graduate student representative, NJIT English Language Program assessment committee</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- DISSERTATION -->
+      <section id="dissertation" class="panel">
+        <h2>Dissertation</h2>
+
+        <div class="card">
+          <h3>Current Work: Multi-Agent Deep Reinforcement Learning for Autonomous Shuttle Routing</h3>
+          <p class="muted">
+            Dynamic routing of multiple shuttles under stochastic passenger demand with ride-sharing constraints.
+          </p>
+
+          <div class="grid">
+            <div>
+              <h4>Contributions</h4>
+              <ul class="bullets">
+                <li>Multi-agent PPO with LSTM for temporal decision-making</li>
+                <li>Observation design under partial visibility + passenger prioritization</li>
+                <li>Reward shaping for pickups/drop-offs, waiting time, and efficiency</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+            <h3>Dissertation Proposal - Learning-Based Single Agent Routing Under Stochastic Demand</h3>
+          
+            <p class="muted">
+              Preprint available — 
+              <a href="https://doi.org/10.20944/preprints202602.0835.v1" target="_blank" rel="noopener">
+                DOI: 10.20944/preprints202602.0835.v1
+              </a><br />
+              Under review for MDPI Special Issue:
+              <em>Smart City Transportation and Electric Vehicles: Innovations for Sustainable Urban Mobility</em>
+            </p>
+          
+            <p>
+              To ensure feasibility and computational tractability during the dissertation proposal stage,
+              several modeling assumptions were intentionally relaxed to enable development of a functional
+              prototype. The objective was to validate the learning framework before introducing full
+              real-world complexity.
+            </p>
+          
+            <ul class="bullets">
+              <li>Simplified urban environment representation without full dynamic congestion modeling</li>
+              <li>Reduced time-dependent components (e.g., simplified stochastic travel times and time-window constraints)</li>
+              <li>Controlled passenger generation mechanisms to limit combinatorial routing complexity</li>
+              <li>Simplified shuttle capacity and bundling logic to stabilize early-stage learning</li>
+              <li>Use of Generative Adversarial Imitation Learning (GAIL) to bootstrap policy learning prior to full RL optimization</li>
+            </ul>
+          
+            <p>
+              These structured relaxations allowed the reinforcement learning framework to converge
+              reliably and demonstrate proof-of-concept viability. The prototype establishes a scalable
+              foundation for progressively reintroducing realistic operational constraints, including
+              dynamic congestion, richer demand patterns, and advanced multi-agent coordination.
+            </p>
+          
+            <div class="stack">
+              <a class="btn ghost"
+                 href="https://github.com/kimhyun1018/gail_ppo_ridesharing"
+                 target="_blank"
+                 rel="noopener">
+                Dissertation Proposal Code (GitHub)
+              </a>
+            </div>
+          </div>
+      </section>
+
+    <!-- RESEARCH -->
+    <section id="research" class="panel">
+        <h2>Research</h2>
     
-        <!-- Category: Fukuoka -->
-        <h3>Fukuoka, Japan</h3>
-        <div class="photo-gallery">
-            <img src="photos/IMG_0899.jpg" alt="Kokutai-doro Ave., Fukuoka, Japan">
-            <img src="photos/IMG_0980.jpg" alt="Ohori Park, Fukuoka, Japan">
+        <!-- Applied Transportation Research -->
+        <div class="card">
+        <h3>Applied Transportation Research (NJDOT & NJTPA)</h3>
+    
+        <p class="muted">
+            During my PhD, I collaborated with regional stakeholders—including the New Jersey Department of Transportation (NJDOT)
+            and the North Jersey Transportation Planning Authority (NJTPA)—on applied transportation analytics and modeling projects
+            supporting planning and policy decisions across New Jersey.
+        </p>
+    
+        <h4>NJDOT</h4>
+        <ul class="bullets">
+            <li>Developed a truck parking prediction framework and conducted literature reviews on national truck parking best practices</li>
+            <li>Validated high-resolution GPS-based mobility datasets for traffic volume estimation</li>
+            <li>Performed market penetration and statistical performance studies (R², least-squares) comparing probe-based counts with weigh-in-motion data</li>
+            <li>Processed large-scale datasets using an on-premise Hadoop/Spark cluster for querying, cleaning, and transformation</li>
+        </ul>
+    
+        <h4>NJTPA</h4>
+        <ul class="bullets">
+            <li>Contributed to a prototype regional bicycle travel demand model integrated with NJRTM-E</li>
+            <li>Built an end-to-end pipeline covering trip generation, distribution, and network assignment at block-group resolution</li>
+            <li>Led acquisition and preprocessing of third-party GPS mobility data via cloud-based queries and APIs</li>
+            <li>Integrated external data sources into the modeling workflow for calibration and validation</li>
+        </ul>
+    
+        <p>
+            Although the initial prototype was not formally deployed, the project provided hands-on experience building a full
+            modeling pipeline—from data ingestion through assignment—and established a foundation for continued refinement.
+            Ongoing improvements include k-shortest path routing and development of route choice models using expanded
+            behavioral and network features.
+        </p>
         </div>
     
-        <!-- Category: Jeju -->
-        <h3>Ulleungdo, South Korea</h3>
-        <div class="photo-gallery">
-            <img src="photos/IMG_0386 copy.jpg" alt="Daepunggam Cliff, Ulleungdo, South Korea">
-            <img src="photos/IMG_0389.jpg" alt="Daepunggam Cliff, Ulleungdo, South Korea">
-            <img src="photos/IMG_0682 copy.jpg" alt="Port Dodong, Ulleungdo, South Korea">
-            <img src="photos/IMG_0892.jpg" alt="Gwaneumdo, Ulleungdo, South Korea">
-        </div>
+        <!-- Dissertation Research -->
+        <div class="card">
+        <h3>Distributed Reinforcement Learning for Multi-Agent Shuttle Routing</h3>
     
-        <!-- Category: New York -->
-        <h3>Bucclech Park in New Brunswick, New Jersey</h3>
-        <div class="photo-gallery">
-            <img src="photos/IMG_0060.JPG" alt="Bucclech Park in New Brunswick, New Jersey">
-            <img src="photos/IMG_0061.JPG" alt="Bucclech Park in New Brunswick, New Jersey">
+        <p class="muted">
+            Independent doctoral research focused on scalable reinforcement learning for shared autonomous mobility systems.
+        </p>
+    
+        <p>
+            I designed and deployed an on-premise distributed reinforcement learning cluster using Ray, consisting of seven nodes
+            (six workers and one learner). The system is fully containerized with Docker and supports GPU-accelerated training via CUDA.
+            Both rollout workers and the central learner leverage GPUs for efficient forward inference and backpropagation.
+            The cluster currently sustains approximately 2,000 concurrent custom simulation environments for high-throughput policy learning.
+        </p>
+    
+        <p>
+            This infrastructure supports my dissertation, tentatively titled:
+            <strong>“Reinforcement Learning for Multi-Agent Shuttle Routing Optimization.”</strong>
+        </p>
+    
+        <ul class="bullets">
+            <li>Multi-agent PPO with recurrent policies for routing</li>
+            <li>Custom simulation environments for stochastic passenger demand and ride-sharing constraints</li>
+            <li>Distributed training pipelines for scalable policy optimization</li>
+            <li>System-level optimization of shared autonomous shuttle operations</li>
+        </ul>
+    
+        <p>
+            This work bridges reinforcement learning, distributed systems, and transportation modeling, aiming to develop
+            scalable learning-based approaches for real-world shared mobility applications.
+        </p>
         </div>
-        </div>
-    </div>
-</div>
+    </section>
 
-<script src="script.js"></script>
+      <!-- USDOT -->
+        <section id="usdot" class="panel">
+            <h2>USDOT</h2>
+        
+            <div class="card">
+            <h3>Transportation Data Analytics, Forecasting, and Automation</h3>
+        
+            <ul class="bullets">
+                <li>Time series forecasting: transborder freight, TSA screening volumes, airline enplanements (including holiday peaks)</li>
+                <li>Statistical analysis for Port Performance Statistics (annual reporting to Congress)</li>
+                <li>Validated and updated Passenger Facts &amp; Figures and Aviation Facts &amp; Figures datasets</li>
+                <li>Built a multi-language pipeline: Python orchestration → embedded R → embedded Sybase SQL (query → transform → publish)</li>
+            </ul>
+        
+            <h4>Selected Public Products</h4>
+            <ul class="bullets">
+                <li>
+                <strong>Passenger Travel Facts &amp; Figures</strong> — National passenger mobility indicators.
+                <a href="https://data.bts.gov/stories/s/f6cu-qb3g" target="_blank" rel="noopener">View dashboard</a>
+                </li>
+        
+                <li>
+                <strong>Aviation Facts &amp; Figures</strong> — Airline activity, passengers, and system-level aviation statistics.
+                <a href="https://data.bts.gov/stories/s/2ub2-svfq" target="_blank" rel="noopener">View dashboard</a>
+                </li>
+        
+                <li>
+                <strong>Preliminary Transportation Estimates</strong> — Near–real-time proxy indicators addressing 2–3 month reporting lags; created automated HTML outputs to support timely decision-making.
+                <a href="https://www.bts.gov/browse-statistical-products-and-data/preliminary-estimates/preliminary-estimates"
+                    target="_blank" rel="noopener">View page</a>
+                </li>
+        
+                <li>
+                <strong>Port Performance Freight Statistics</strong> — Contributed to data analysis and preliminary estimates for congressionally reported port performance metrics.
+                <a href="https://www.bts.gov/explore-topics-and-geography/2025-port-performance-freight-statistics-program-annual-report"
+                    target="_blank" rel="noopener">2025 Port Performance Freight Statistics Program: Annual Report to Congress</a>
+                <span class="sep">·</span>
+                <a href="https://www.bts.gov/browse-statistical-products-and-data/port-performance/2026-port-performance-freight-statistics"
+                    target="_blank" rel="noopener">2026 Port Performance Freight Statistics Program: Annual Report to Congress</a>
+                </li>
+            </ul>
+        
+            <p class="note">Only publish public / non-sensitive work samples.</p>
+        
+            <div class="stack">
+                <a class="btn ghost" href="reports/usdot_work_sample.pdf" target="_blank" rel="noopener">Work Sample (PDF)</a>
+            </div>
+            </div>
+        </section>
+
+      <!-- NSF IRES -->
+      <section id="ires" class="panel">
+        <h2>NSF IRES</h2>
+
+        <div class="card">
+            <h3>NSF IRES: AI in Smart Transportation (KAIST, South Korea)</h3>
+          
+            <p class="muted">
+              NSF International Research Experience for Students (IRES) — US–Korea Advanced Transportation Infrastructure Informatics Institute (ATI<sup>3</sup>)
+            </p>
+          
+            <p>
+              I was selected as an NSF IRES Fellow and participated in an intensive three-week international research program hosted by the
+              Korea Advanced Institute of Science and Technology (KAIST). The program immersed students in applied artificial intelligence and
+              simulation for intelligent transportation systems through lectures, hands-on labs, field visits, and research-driven team projects.
+              Core topics included machine learning fundamentals (regression/classification, RNN/LSTM, reinforcement learning),
+              AI-based perception and analytics (e.g., object detection and trajectory tracking), and mixed-mobility traffic simulation using SUMO.
+            </p>
+          
+            <p>
+              A key component of the program was collaborative, transdisciplinary research conducted in joint US–Korea teams
+              (typically two students from the U.S. paired with two KAIST students). Teams developed an AI + transportation research study,
+              presented findings at the end of the program, and produced a final paper each year to document methods, results, and implications
+              for smart mobility. The program also featured guest lectures from leading transportation and technology practitioners—including
+              senior industry leaders such as the CTO of Kakao Mobility—providing exposure to real-world deployment challenges and emerging
+              trends in smart transportation.
+            </p>
+          
+            <p>
+              My 2024 NSF IRES team paper was subsequently selected for a lecture presentation at the 2025 Transportation Research Board (TRB)
+              Annual Meeting, highlighting the program’s emphasis on producing publication-quality, conference-ready research.
+            </p>
+          
+            <p class="note">
+              Program highlights include structured mentoring, professional development, and industry engagement within Korea’s smart mobility ecosystem.
+            </p>
+          </div>
+
+        <div class="stack">
+            <a class="btn ghost"
+               href="stuff/NSF IRES/TRB 2025 - On the Road to Inclusion_ Exploring Equity in Autonomous Public Transportation.pdf"
+               target="_blank"
+               rel="noopener">
+              2025 TRB Lecturn Presentation (PDF)
+            </a>
+          </div>
+
+        <div class="card">
+          <p class="muted">
+            Previous years' final reports and presentations
+          </p>
+
+          <div class="year">
+            <h3>2024: ON THE ROAD TO INCLUSION: EXPLORING EQUITY IN AUTONOMOUS PUBLIC TRANSPORTATION</h3>
+            <div class="links">
+              <a href="stuff/NSF IRES/2024 NSF IRES Paper.pdf" target="_blank" rel="noopener">Paper</a>
+              <span class="sep">·</span>
+              <a href="stuff/NSF IRES/2024 NSF IRES Presentation.pdf" target="_blank" rel="noopener">Slides</a>
+            </div>
+          </div>
+
+          <div class="year">
+            <h3>2023: Digital Twins for Smart Cities: Application-specific Analysis of Frameworks Predictive Abilities and Overall Benefits</h3>
+            <div class="links">
+              <a href="stuff/NSF IRES/2023 NSF IRES Paper.pdf" target="_blank" rel="noopener">Paper</a>
+              <span class="sep">·</span>
+              <a href="stuff/NSF IRES/2023 NSF IRES Presentation.pdf" target="_blank" rel="noopener">Slides</a>
+            </div>
+          </div>
+
+          <div class="year">
+            <h3>2022: Towards a Standardized Testing Suite for Autonomous and Connected Autonomous Vehicle Driving Policies</h3>
+            <div class="links">
+              <a href="stuff/NSF IRES/2022 NSF IRES Paper.pdf" target="_blank" rel="noopener">Paper</a>
+              <span class="sep">·</span>
+              <a href="stuff/NSF IRES/2022 NSF IRES Presentation.pdf" target="_blank" rel="noopener">Slides</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPETITIONS -->
+      <section id="competitions" class="panel">
+        <h2>Competitions</h2>
+
+        <div class="card">
+            <h3>Transportation Technology Tournament (TTT)</h3>
+          
+            <p class="muted">
+              Hosted by the 
+              National Operations Center of Excellence (NOCoE) and the 
+              Institute of Transportation Engineers (ITE)
+            </p>
+          
+            <p>
+              The Transportation Technology Tournament (TTT) is an annual national student competition that connects multidisciplinary
+              teams with public transportation agencies to solve real-world mobility and operations challenges using Intelligent
+              Transportation Systems (ITS) and Transportation Systems Management &amp; Operations (TSMO) concepts.
+            </p>
+          
+            <p>
+              Teams of 4–6 students collaborate with agency partners and academic mentors to develop solution concepts (light ConOps),
+              supported by virtual technical training and industry guidance. Finalist teams are invited to present their work at the
+              ITE Annual Meeting, with travel expenses covered. Typical projects leverage emerging technologies such as artificial
+              intelligence, machine learning, computer vision, digital twins, and traffic analytics.
+            </p>
+          
+            <p>
+              The competition emphasizes applied problem-solving, professional communication, and workforce development while
+              providing agencies with innovative, student-driven approaches to operational transportation challenges.
+            </p>
+          </div>
+
+        <div class="card">
+          <h3>Systems Engineering &amp; ITS</h3>
+          <ul class="bullets">
+            <li>2025 — 2026 FIFA WORLD CUP METLIFE STADIUM TRANSPORTATION PLANNING</li>
+            <li>2024 — Accelerated Traffic Incident Detection and Operational Response Using Crowdsourced Incident Reporting</li>
+          </ul>
+
+          <div class="stack">
+            <a class="btn ghost" href="stuff/Competitions/2025 TTT ConOps.pdf" target="_blank" rel="noopener">2025 Report (PDF)</a>
+            <a class="btn ghost" href="stuff/Competitions/2024 TTT ConOps.pdf" target="_blank" rel="noopener">2024 Report (PDF)</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Hyun Kim</span>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

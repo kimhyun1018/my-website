@@ -1,19 +1,16 @@
-function openTab(event, tabName) {
-    var i, tabcontent, tabbuttons;
+const tabs = document.querySelectorAll(".tab");
+const panels = document.querySelectorAll(".panel");
 
-    // Hide all tab content
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    const id = tab.dataset.tab;
 
-    // Remove active class from all buttons
-    tabbuttons = document.getElementsByClassName("tab-button");
-    for (i = 0; i < tabbuttons.length; i++) {
-        tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
-    }
+    tabs.forEach(t => t.classList.remove("active"));
+    panels.forEach(p => p.classList.remove("active"));
 
-    // Show the current tab and add active class to the button
-    document.getElementById(tabName).style.display = "block";
-    event.currentTarget.className += " active";
-}
+    tab.classList.add("active");
+    document.getElementById(id).classList.add("active");
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
