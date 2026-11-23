@@ -74,33 +74,81 @@
         <h2>Dissertation</h2>
 
         <div class="card">
-          <h3>Current Work: Multi-Agent Deep Reinforcement Learning for Autonomous Shuttle Routing</h3>
+          <h3>Current Work: Search-Distilled Dispatch for Demand-Responsive Transit: A Compute–Quality Frontier</h3>
           <p class="muted">
-            Dynamic routing of multiple shuttles under stochastic passenger demand with ride-sharing constraints.
+            Hyun Kim, Branislav Dimitrijevic, Mohammadjavad Bazdar<br />
+            Under review at <em>Transportation Research Part C: Emerging Technologies</em> (submitted November 2026)
+          </p>
+
+          <p>
+            Small demand-responsive fleets are judged against contractual limits on passenger wait and detour.
+            The dispatch methods that protect those limits are either fast heuristics or optimizers whose quality
+            depends on how much computation each decision is allowed. This work asks how much of a search planner's
+            quality a learned policy keeps at a millisecond budget, and where on the compute axis an optimizer overtakes it.
           </p>
 
           <div class="grid">
             <div>
-              <h4>Contributions</h4>
+              <h4>Approach</h4>
               <ul class="bullets">
-                <li>Multi-agent PPO with LSTM for temporal decision-making</li>
-                <li>Observation design under partial visibility + passenger prioritization</li>
-                <li>Reward shaping for pickups/drop-offs, waiting time, and efficiency</li>
+                <li>A beam-search planner with a guard-first objective serves as the teacher</li>
+                <li>Its decisions are distilled into a neural policy by behavior cloning and expert iteration</li>
+                <li>The policy is then improved by proximal policy optimization held on a leash to the cloned policy</li>
+                <li>Evaluation is on paired seeds against nearest-first dispatch, two insertion heuristics, the teacher, and a
+                    rolling-horizon re-optimizer whose time limit is swept from tens of milliseconds to seconds</li>
+                <li>Demand is synthetic, replayed New York taxi trips, and both under stochastic travel times</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Findings</h4>
+              <ul class="bullets">
+                <li>The policy decides in 5 ms on one CPU thread</li>
+                <li>At the re-optimizer's smallest time limit, the policy is better on most wait metrics</li>
+                <li>The re-optimizer matches the policy at five to fifty times its compute, depending on demand, and at about
+                    two hundred times wins the wait and ride tails</li>
+                <li>Under travel-time noise on real demand, the re-optimizer and insertion degrade more than the policy</li>
+                <li>Three negative results are reported, including that prolonged fine-tuning sacrifices whichever service
+                    axis the reward leaves unpriced</li>
               </ul>
             </div>
           </div>
+
+          <p class="muted">
+            Evaluation code, trained policy weights and results will be released when the paper is published.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Papers from the Dissertation</h3>
+          <ul class="bullets">
+            <li>
+              Kim, H., Dimitrijevic, B., &amp; Bazdar, M. (2026). Search-distilled dispatch for demand-responsive transit:
+              A compute–quality frontier. <em>Transportation Research Part C</em>, under review.
+            </li>
+            <li>
+              Kim, H., &amp; Dimitrijevic, B. (2026). Learning-based routing for autonomous shuttles under stochastic demand
+              using generative adversarial imitation learning and reinforcement learning. <em>Urban Science</em>, 10(5), 287.
+              <a href="https://doi.org/10.3390/urbansci10050287" target="_blank" rel="noopener">DOI</a>
+            </li>
+            <li>
+              Kim, H., &amp; Dimitrijevic, B. (2026). Protecting passenger wait tails with guard-refereed rolling-horizon
+              search for demand-responsive shuttle dispatch. <em>TRB 2027 Annual Meeting</em>, under review.
+            </li>
+            <li>
+              Kim, H., &amp; Dimitrijevic, B. (2026). Diagnosing curriculum stalls in deep reinforcement learning for
+              demand-responsive shuttle dispatch: Two forensic case studies. <em>TRB 2027 Annual Meeting</em>, under review.
+            </li>
+          </ul>
         </div>
 
         <div class="card">
             <h3>Dissertation Proposal - Learning-Based Single Agent Routing Under Stochastic Demand</h3>
           
             <p class="muted">
-              Preprint available — 
-              <a href="https://doi.org/10.20944/preprints202602.0835.v1" target="_blank" rel="noopener">
-                DOI: 10.20944/preprints202602.0835.v1
-              </a><br />
-              Under review for MDPI Special Issue:
-              <em>Smart City Transportation and Electric Vehicles: Innovations for Sustainable Urban Mobility</em>
+              Published in <em>Urban Science</em>, 10(5), 287 (2026) —
+              <a href="https://doi.org/10.3390/urbansci10050287" target="_blank" rel="noopener">
+                DOI: 10.3390/urbansci10050287
+              </a>
             </p>
           
             <p>
@@ -195,15 +243,16 @@
         </p>
     
         <ul class="bullets">
-            <li>Multi-agent PPO with recurrent policies for routing</li>
-            <li>Custom simulation environments for stochastic passenger demand and ride-sharing constraints</li>
-            <li>Distributed training pipelines for scalable policy optimization</li>
-            <li>System-level optimization of shared autonomous shuttle operations</li>
+            <li>A custom simulator of pooled shuttle dispatch with stochastic demand, ride-sharing constraints and replayed New York taxi trips</li>
+            <li>A beam-search planner used as the teacher for imitation learning</li>
+            <li>Policy distillation by behavior cloning and expert iteration, followed by PPO fine-tuning</li>
+            <li>Paired-seed benchmarking against insertion heuristics and a rolling-horizon re-optimizer across compute budgets</li>
         </ul>
-    
+
         <p>
-            This work bridges reinforcement learning, distributed systems, and transportation modeling, aiming to develop
-            scalable learning-based approaches for real-world shared mobility applications.
+            The latest results are in the manuscript under review at <em>Transportation Research Part C</em>
+            (see the Dissertation tab). Earlier stages of the work trained multi-agent PPO with recurrent policies directly;
+            the analysis of why that approach stalled is one of the two papers under review for the TRB 2027 Annual Meeting.
         </p>
         </div>
     </section>
